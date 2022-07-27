@@ -1,0 +1,106 @@
+<section class="h-200 gradient-form container-fluid" style="margin-top: 90px ;background-image: url('../../../../assets/img/rosebg.png');background-repeat:space;background-size:contain;">
+	<div class="container py-2 h-100">
+	  <div class="row d-flex justify-content-center align-items-center h-100">
+		<div class="col-lg-5">
+			<ngb-alert [type]="'danger'" [dismissible]="false" *ngIf="error">
+				<div class="alert-body">
+				  <p>{{ error.error}}</p>
+				</div>
+			  </ngb-alert>
+		  <div class="card rounded-3 text-black">
+			<div class="card-body p-md-4side mx-md-4">
+  
+				<div class="text-center">
+				  <img src="../../../../assets/img/gift boxes.png"
+				  width="80" alt="logo">
+				  <h4 class="mt-1 mb-5 pb-1">🅱🅸🆁🆃🅷🅳🅰🆈<br> 🅽🅾🆃🅸🅵🅸🅲🅰🆃🅸🅾🅽 </h4>
+				</div>
+
+				<form class="auth-login-form mt-2" #form="ngForm" (ngSubmit)="onSubmit()">
+				  <p>Please login using Email and  Password</p>
+
+				  <!-- <div class="form-outline mb-4">
+					<input type="email" id="form2Example11" class="form-control"
+					  placeholder="Phone number or email address" />
+					<label class="form-label" for="form2Example11">Username</label>
+				  </div> -->
+				  <div class="form-group">
+					<label class="form-label" for="login-email">Email</label>
+					<div class="input-group input-group-merge form-password-toggle">
+					  <div class="input-group-prepend">
+						<span class="input-group-text"></span>
+					  </div>
+					  <input style="background-color: white;color:black" type="text" formControlName="email" class="form-control"
+						
+					  [class.is-invalid]="{ 'is-invalid': submitted && f.email.errors }" placeholder="your@demo.com"
+						aria-describedby="login-email" autofocus="" tabindex="1" />
+					  <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+						<div *ngIf="f.email.errors.required">Email is required</div>
+						<div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+					  </div>
+					</div>
+				  </div>
+
+				  <!-- <div class="form-outline mb-4">
+					<input type="password" id="form2Example22" class="form-control" />
+					<label class="form-label" for="form2Example22">Password</label>
+				  </div> -->
+
+				  <div class="form-group">
+					<div class="d-flex justify-content-between">
+					  <label for="login-password">Password</label>
+					  <!-- <a routerLink="/pages/authentication/forgot-password-v2"><small>Forgot Password?</small></a> -->
+					</div>
+					<div class="input-group input-group-merge form-password-toggle">
+					  <div class="input-group-prepend">
+						<span class="input-group-text"></span>
+					  </div>
+					  <input style="background-color: white;color:black" [type]="passwordTextType ? 'text' : 'password'" formControlName="password"
+						class="form-control form-control-merge"
+						
+						[class.is-invalid]="{ 'is-invalid error': submitted && f.password.errors }" placeholder="············"
+						aria-describedby="login-password" tabindex="2" />
+					  <!-- <div class="input-group-append">
+						<span class="input-group-text cursor-pointer">
+							<i class="feather font-small-4" 
+							 [ngClass]="{ 
+							  'icon-eye-off': passwordTextType,
+							  'icon-eye': !passwordTextType
+							}" 
+							 (click)="togglePasswordTextType()"></i>
+							</span>
+					  </div> -->
+					</div>
+					<div *ngIf="submitted && f.password.errors" class="invalid-feedback"
+					  [ngClass]="{ 'd-block': submitted && f.password.errors }">
+					  <div *ngIf="f.password.errors.required">Password is required</div>
+					</div>
+				  </div>
+
+				  <div class="text-center pt-1 mb-5 pb-1">
+					<button class="btn btn-danger btn-small fa-lg gradient-custom-2 mb-3" type="submit" rippleEffect> 
+						Login 
+					</button><br>
+					<!-- <a class="text-muted text-danger" href="#!">Forgot password?</a> -->
+				  </div>
+
+  
+
+				</form>
+
+			  </div>
+			<div class="row g-0">
+			  <!-- <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+				<div class="text-white px-3 py-4 p-md-5 mx-md-4">
+				  <h1 class="mb-4">Ⓐⓑⓞⓤⓣ Ⓤⓢ</h1>
+				  <p class="small mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+					exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+				</div>
+			  </div> -->
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </section>

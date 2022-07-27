@@ -1,0 +1,62 @@
+<div class=" content">
+    <div class=" row">
+        <div class=" col-12">
+            <div class=" card card-chart"> 
+                <div class="content-wrapper container-xxl p-0">
+                    <div class="content-body">
+                        <!-- content-header component -->
+                        <!-- <app-content-header [contentHeader]="contentHeader"></app-content-header> -->
+                        <!-- / Subject Form section start -->
+                        <div class="card" *ngIf="displayForm">
+                            <div class="card-body" style="border:solid 1px red  ;">
+                                <section id="multiple-column-form">
+                                    <div class="row match-height">
+                                        <div class="col-12">
+                                            <!-- <h4 class="card-title">{{operation}} Record</h4> -->
+                                            <div class="card-body">
+
+                                                <form class="form" role="form" #form="ngForm"
+                                                    (ngSubmit)="processForm(e)"> 
+                                                    <!-- /*Groups Start*/ -->
+                                                    <div class="form-body"> 
+                                                            <div class="form-group">
+                                                                <label for="email"
+                                                                    [class.text-danger]="email.invalid && email.touched">Email
+                                                                </label><i class="text-danger">*</i>
+                                                                <input type="text"
+                                                                    style="background-color: white ; color: black;"
+                                                                    maxlength="50" id="email" name="email"
+                                                                    #email="ngModel" [(ngModel)]="apiModel.email"
+                                                                    [class.is-invalid]="email.invalid && email.touched"
+                                                                    class="form-control" placeholder="Enter Email..."
+                                                                    required>
+                                                                <div *ngIf="email.invalid && email.touched">
+                                                                    <small *ngIf="email.errors?.required"
+                                                                        class="text-danger">Email is
+                                                                        Required</small>
+                                                                </div>
+                                                            </div> 
+                                                    </div> 
+                                                    <div class="form-actions right mb-0 pb-0"> 
+                                                        <button type="submit"
+                                                            class="btn btn-primary btn-sm shadow-sm btn-small"
+                                                            [disabled]="form.invalid"> 
+                                                            {{operation}}
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                        <!-- Subject Form section end -->
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

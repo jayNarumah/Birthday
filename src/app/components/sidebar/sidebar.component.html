@@ -1,0 +1,53 @@
+<div class="logo">
+  <!-- <a href="#" class="simple-text logo-mini"> -->
+    <div class=" ">
+      <!-- <img src="./assets/img/angular2-logo-white.png" /> -->
+      <!-- <i _ngcontent-tix-c35="" class="icon-paper tim-icons"></i> -->
+    </div>
+  <!-- </a> -->
+  <a  class="logo-normal" style="color: white;">
+    MENU
+  </a>
+</div>
+<!-- style="background-image: url('../../../../../assets/img/Birthday.png');background-repeat: no-repeat;" -->
+<div class="sidebar-wrapper" >
+  <ul class="nav">
+    <li
+      routerLinkActive="active"
+      *ngFor="let menuItem of menuItems"
+      class="{{ menuItem.class }} nav-item"
+    >
+      <a [routerLink]="[menuItem.path]">
+        <i class="tim-icons  {{ menuItem.icon }}"></i>
+        <h6>{{ menuItem.title }}</h6>
+      </a>
+    </li>
+  </ul>
+
+  
+<div class="logo">
+  <a href="" class=" logo-mini">
+    <div class=" ">  
+      
+      <!-- <i _ngcontent-tix-c35="" class="icon-settings tim-icons"></i> -->
+    </div>
+  </a>
+  <a  class="logo-normal" style="color: white;">
+    SETTINGS
+  </a>
+</div>
+
+ <ul class="nav">
+    <li
+      routerLinkActive="active"
+      *ngFor="let menuItem of menuItems2"
+      class="{{ menuItem.class }} nav-item"
+    >
+      <a [routerLink]="[menuItem.path]">
+        <i class="tim-icons  {{ menuItem.icon }}"></i>
+        <h6>{{ menuItem.title }}</h6>
+      </a>
+    </li>
+  </ul>
+
+</div>

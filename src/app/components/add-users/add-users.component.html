@@ -1,0 +1,314 @@
+<div class=" content">
+    <div class=" row">
+        <div class=" col-12">
+            <div class=" card card-chart">
+
+                <div class="content-wrapper container-xxl p-0">
+                    <div class="content-body">
+                        <!-- content-header component -->
+                        <!-- <app-content-header [contentHeader]="contentHeader"></app-content-header> -->
+                        <!-- / Subject Form section start -->
+                        <div class="card" *ngIf="displayForm">
+                            <div class="card-body" style="border:solid 1px red  ;">
+                                <section id="multiple-column-form">
+                                    <div class="row match-height">
+                                        <div class="col-12">
+                                            <!-- <h4 class="card-title">{{operation}} Record</h4> -->
+                                            <div class="card-body">
+
+                                                <form class="form" role="form" #form="ngForm"
+                                                    (ngSubmit)="processForm(e)">
+                                                    <!-- <input type="hidden" [(ngModel)]="apiModel.id" name="id" /> -->
+                                                    <h6 style="color:gray ;">Profile
+                                                        <hr>
+                                                    </h6>
+                                                    <div class="form-body">
+                                                        <div class="row">
+
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="FullName"
+                                                                        [class.text-danger]="FullName.invalid && FullName.touched">Full
+                                                                        Name
+                                                                    </label><i class="text-danger">*</i>
+                                                                    <input type="text" style="background-color: white ; color: black;" 
+                                                                        id="FullName" name="fullName"
+                                                                        #FullName="ngModel" [(ngModel)]="apiModel.name"
+                                                                        [class.is-invalid]="FullName.invalid && FullName.touched"
+                                                                        class="form-control"
+                                                                        placeholder="Enter Full Name..." required>
+                                                                    <div *ngIf="FullName.invalid && FullName.touched">
+                                                                        <small *ngIf="FullName.errors?.required"
+                                                                            class="text-danger">Full Name is
+                                                                            Required</small>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="Email"
+                                                                        [class.text-danger]="Email.invalid && Email.touched">Email
+                                                                    </label><i class="text-danger">*</i>
+                                                                    <input type="email" style="background-color: white ; color:black ;" [email]="true" id="Email"
+                                                                        name="email" #Email="ngModel"
+                                                                        [(ngModel)]="apiModel.email"
+                                                                        [class.is-invalid]="Email.invalid && Email.touched"
+                                                                        class="form-control"
+                                                                        placeholder="Enter Email..." required>
+                                                                    <div *ngIf="Email.invalid && Email.touched">
+                                                                        <small *ngIf="Email.errors?.required"
+                                                                            class="text-danger">Email is
+                                                                            Required</small>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-body">
+                                                        <div class="row">
+
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="PhoneNumber"
+                                                                        [class.text-danger]="PhoneNumber.invalid && PhoneNumber.touched">Phone
+                                                                        Number
+                                                                    </label><i class="text-danger">*</i>
+                                                                    <input type="text" style="background-color: white ; color: black;" maxlength="11" id="PhoneNumber"
+                                                                        name="PhoneNumber" #PhoneNumber="ngModel"
+                                                                        [(ngModel)]="apiModel.phone_number"
+                                                                        [class.is-invalid]="PhoneNumber.invalid && PhoneNumber.touched"
+                                                                        class="form-control"  
+                                                                        placeholder="Enter Phone Number..." required>
+                                                                    <div
+                                                                        *ngIf="PhoneNumber.invalid && PhoneNumber.touched">
+                                                                        <small *ngIf="PhoneNumber.errors?.required"
+                                                                            class="text-danger">Phone Number is
+                                                                            Required</small>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="DateOfBirth"
+                                                                        [class.text-danger]="DateOfBirth.invalid && DateOfBirth.touched">Date
+                                                                        Of Birth
+                                                                    </label><i class="text-danger">*</i>
+                                                                    <input type="date" style="background-color: white ; color: black;"   id="DateOfBirth"
+                                                                        name="DateOfBirth" #DateOfBirth="ngModel"
+                                                                        [(ngModel)]="apiModel.dob"
+                                                                        [class.is-invalid]="DateOfBirth.invalid && DateOfBirth.touched"
+                                                                        class="form-control"
+                                                                        placeholder="Select Date Of Birth..." required>
+                                                                    <div
+                                                                        *ngIf="DateOfBirth.invalid && DateOfBirth.touched">
+                                                                        <small *ngIf="DateOfBirth.errors?.required"
+                                                                            class="text-danger">Date Of Birth is
+                                                                            Required</small>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-body">
+                                                        <div class="row">
+                                                            <div class="form-group col-md-6">
+                                                                <label class="form-label" for="GenderID"
+                                                                    [class.text-danger]="!GenderID.valid && GenderID.touched">Gender<i
+                                                                        class="text-danger">*</i></label>
+                                                                <ng-select [items]="Gender" style="color: black;"
+                                                                    [class.error]="!GenderID.valid && GenderID.touched"
+                                                                    #GenderID="ngModel" required [closeOnSelect]="true"
+                                                                    [searchable]="true" bindLabel="gender"
+                                                                    gender="GenderID" id="id"
+                                                                    placeholder="Select Gender . . ." bindValue="gender"
+                                                                    [(ngModel)]="apiModel.gender">
+                                                                    <ng-template ng-label-tmp let-item="item"
+                                                                        let-clear="clear">
+                                                                        <span class="ng-value-label">
+                                                                            {{item.gender}}</span>
+                                                                        <span class="ng-value-icon right"
+                                                                            (click)="clear(item)"
+                                                                            aria-hidden="true">×</span>
+                                                                    </ng-template>
+                                                                </ng-select>
+                                                                <div *ngIf="GenderID.invalid"
+                                                                    class="form-text text-danger">
+                                                                    <small
+                                                                        *ngIf="GenderID.errors.required && GenderID.touched">
+                                                                        Gender is
+                                                                        required!
+                                                                    </small>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="Password"
+                                                                        [class.text-danger]="Password.invalid && Password.touched">Password
+                                                                    </label><i class="text-danger">*</i>
+                                                                    <input type="password" maxlength="50" id="Password"
+                                                                        name="Password" #Password="ngModel"
+                                                                        [(ngModel)]="apiModel.password"
+                                                                        [class.is-invalid]="Password.invalid && Password.touched"
+                                                                        class="form-control"
+                                                                        placeholder="Enter Password..." 
+                                                                        required minlength="6"
+                                                                        >
+                                                                    <div *ngIf="Password.invalid && Password.touched">
+                                                                        <small *ngIf="Password.errors?.required"
+                                                                            class="text-danger">Password is
+                                                                            Required</small>
+                                                                    </div>
+                                                                </div>
+                                                            </div> 
+                                                            <!-- <div class="form-group col-md-6">
+                                                                <label class="form-label" for="group_id"
+                                                                    [class.text-danger]="group_id.invalid &amp;&amp; group_id.touched">Group<i
+                                                                        class="text-danger">*</i></label>
+                                                                <ng-select [items]="groupsResources" #group_id="ngModel"
+                                                                style="background-color: white; color:black" placeholder="Select Group"
+                                                                    required [closeOnSelect]="true" [searchable]="true"
+                                                                    bindLabel="group_name" bindValue="id"
+                                                                    name="group_id" id="group_id"
+                                                                    placeholder="Select Group . . ."
+                                                                    [(ngModel)]="apiModel.group_id"
+                                                                    [class.error]="!group_id.valid && group_id.touched">
+                                                                    <ng-template ng-label-tmp let-item="item"
+                                                                        let-clear="clear">
+                                                                        <span class="ng-value-label"> {{ item.group_name}}</span>
+                                                                        <span class="ng-value-icon right"
+                                                                            (click)="clear(item)"
+                                                                            aria-hidden="true">×</span>
+                                                                    </ng-template>
+                                                                </ng-select>
+
+                                                                <div
+                                                                    *ngIf="group_id.invalid &amp;&amp; group_id.touched">
+                                                                    <span *ngIf="group_id.invalid" class="invalid-form">
+                                                                        <small class="form-text text-danger"
+                                                                            *ngIf="group_id.errors.required">Group is
+                                                                            required!</small>
+                                                                    </span>
+                                                                </div>
+                                                            </div> -->
+
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <!-- /*Groups Start*/ -->
+                                                    <!-- <p style="color:gray;" class="h6">Group Details
+                                                    </p> -->
+                                                    <div class="form-body">
+                                                        <div class="row">
+
+
+                                                            <!-- <div class="form-group col-md-6">
+                                                                <label class="form-label" for="GroupID"
+                                                                    [class.text-danger]="!GroupID.valid && GroupID.touched">Group<i
+                                                                        class="text-danger">*</i></label>
+                                                                <ng-select [items]="groupsResources" scroll="true"
+                                                                    [class.error]="!GroupID.valid && GroupID.touched"
+                                                                    #GroupID="ngModel" required [closeOnSelect]="true"
+                                                                    [searchable]="true" bindLabel="group_name"
+                                                                    name="GroupID" id="id"
+                                                                    placeholder="Select Group . . ." bindValue="id"
+                                                                    [(ngModel)]="apiModel.group_id">
+                                                                    <ng-template ng-label-tmp let-item="item"
+                                                                        let-clear="clear">
+                                                                        <span class="ng-value-label">
+                                                                            {{item.group_name}}</span>
+                                                                        <span class="ng-value-icon right"
+                                                                            (click)="clear(item)"
+                                                                            aria-hidden="true">×</span>
+                                                                    </ng-template>
+                                                                </ng-select>
+                                                                <div *ngIf="GroupID.invalid"
+                                                                    class="form-text text-danger">
+                                                                    <small
+                                                                        *ngIf="GroupID.errors.required && GroupID.touched">
+                                                                        Group is
+                                                                        required!
+                                                                    </small>
+                                                                </div>
+                                                            </div> -->
+                                                            
+                                                          <!-- paswwd -->
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-actions right mb-0 pb-0">
+                                                        <!-- <button type="button" class="btn btn-warning mr-1 btn-sm shadow-sm btn-small" (click)="hideForm()">
+
+                                        Cancel
+                                    </button> -->
+                                                        <button type="submit"
+                                                            class="btn btn-primary btn-sm shadow-sm btn-small"
+                                                            [disabled]="form.invalid">
+
+                                                            {{operation}}
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                        <!-- Subject Form section end -->
+                        <!-- <div class="card"> -->
+                        <!-- <div class="card-header">
+          <h4 class="float-left mb-0 font-weight-bolder">
+              <strong>List of Records</strong>
+          </h4> -->
+                        <!-- <div class="float-right border-radius-lg">
+              <button class="btn btn-gradient-primary btn-sm btn-small" rippleEffect (click)="addItem()">
+                  <i  _ngcontent-tix-c35="" class="icon-simple-add tim-icons"></i>
+                  <span class="d-none d-sm-inline-block">Add New
+                      Record</span>
+              </button>
+         </div>   -->
+
+
+                        <!-- /.box-header -->
+                        <!-- <div class="card-content collapse show">
+          <div class="card-body">
+              <div class="table-responsive"> 
+     
+
+                     <dx-data-grid class="dx-card wide-card border border-danger border-50 ;" [dataSource]="addUserResources"
+                      [showBorders]="true" [visible]="true" placeholder="Search..." [showColumnLines]="true"
+                      [showRowLines]="true" [rowAlternationEnabled]="true" keyExpr="id" [focusedRowEnabled]="true"
+                      [focusedRowIndex]="0" [columnAutoWidth]="true" [allowColumnReordering]="true"
+                      [allowColumnResizing]="true" [columnAutoWidth]="true" [columnHidingEnabled]=false>
+                      <dxo-paging [pageSize]="10"></dxo-paging>
+                      <dxo-pager [showPageSizeSelector]="true" [showInfo]="true"></dxo-pager>
+                      <dxo-filter-row [visible]="true"></dxo-filter-row>
+                      <dxi-column dataField="id" caption="ID"></dxi-column>
+                      <dxi-column dataField="group.name" caption="Group Name"> </dxi-column>
+                      <dxi-column dataField="fullName" caption="Full Name"></dxi-column>
+                      <dxi-column dataField="email" caption="Email"> </dxi-column> 
+
+                      <dxi-column type="buttons" fixed=true>
+                      <dxi-button icon="edit" text="Edit" [onClick]="loadItem"></dxi-button>
+                      <dxi-button icon="trash" text="Delete" [onClick]="deleteItem">
+                      </dxi-button>
+                      </dxi-column>
+                  </dx-data-grid>
+             </div>
+          </div>
+      </div>    -->
+                        <!-- end box-body -->
+                        <!-- </div> -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
